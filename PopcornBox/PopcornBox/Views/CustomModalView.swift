@@ -54,5 +54,4 @@ class CustomModalView: UIView {
         }
         return nil
     }
-    
 }
