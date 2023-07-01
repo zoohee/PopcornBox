@@ -10,17 +10,22 @@ struct Movie {
     var director: String = ""
     var actor: String = ""
     var rating: Double = 0.0
-    var discription: String = "영화다"
-    var thumbnail: String = ""
-    var mainThumbnail: String? {
-        let thumbnailLinks = thumbnail.components(separatedBy: "|")
-        return thumbnailLinks.randomElement()
-    }
+    var thumbnailImage: String = ""
+    var description: String = ""
     var review: String = ""
+    var rank: Int = 0
+    var movieCd: String = ""
+    var selectedThumbnail: String? {
+            let thumbnailLinks = thumbnailImage.components(separatedBy: "|")
+            return thumbnailLinks[0]
+        }
 }
 
 extension Movie {
     init(dailyBoxOffice: DailyBoxOfficeList) {
         self.title = dailyBoxOffice.movieNm
+        self.rank = Int(dailyBoxOffice.rank) ?? 0
+        self.movieCd = dailyBoxOffice.movieCd
     }
 }
+
