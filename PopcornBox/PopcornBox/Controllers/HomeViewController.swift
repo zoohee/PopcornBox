@@ -16,6 +16,13 @@ class HomeViewController: UIViewController {
     }()
     
     var movieData: [Movie] = []
+    
+    let logoImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "popcorn")?.withRenderingMode(.alwaysOriginal)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +62,21 @@ class HomeViewController: UIViewController {
     }
     
     func createViews() {
+        guard let navigationBar = self.navigationController?.navigationBar else { return }
+        navigationBar.addSubview(logoImage)
+        
         navigationController?.view.addSubview(movieListView)
     }
     
     func setConstraints() {
+        guard let navigationBar = self.navigationController?.navigationBar else { return }
+        NSLayoutConstraint.activate([
+                logoImage.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor, constant: -10),
+                logoImage.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -10),
+                logoImage.heightAnchor.constraint(equalToConstant: 70),
+                logoImage.widthAnchor.constraint(equalTo: logoImage.heightAnchor)
+                ])
+        
         guard let navigationControllerView = navigationController?.view else {
             return
         }
