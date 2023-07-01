@@ -34,7 +34,7 @@ class MovieTableViewCell: UITableViewCell {
     
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Title: "
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -42,7 +42,7 @@ class MovieTableViewCell: UITableViewCell {
     
     var directorLabel: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Director: "
         label.font = .systemFont(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -50,7 +50,7 @@ class MovieTableViewCell: UITableViewCell {
     
     var actorLabel: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Actor: "
         label.font = .systemFont(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -79,22 +79,18 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     private func setAutoLayout() {
-        
         roundedRectangle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         roundedRectangle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         roundedRectangle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         roundedRectangle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
         
-        movieImage.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: 5).isActive = true
-        movieImage.topAnchor.constraint(equalTo: roundedRectangle.topAnchor, constant: 5).isActive = true
-        movieImage.bottomAnchor.constraint(equalTo: roundedRectangle.bottomAnchor, constant: -5).isActive = true
+        movieImage.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: 10).isActive = true
+        movieImage.topAnchor.constraint(equalTo: roundedRectangle.topAnchor, constant: 10).isActive = true
+        movieImage.bottomAnchor.constraint(equalTo: roundedRectangle.bottomAnchor, constant: -10).isActive = true
         movieImage.heightAnchor.constraint(equalTo: movieImage.widthAnchor, multiplier: 1.25).isActive = true
         
         labelStackView.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 10).isActive = true
+        labelStackView.trailingAnchor.constraint(equalTo: roundedRectangle.trailingAnchor, constant: -20).isActive = true
         labelStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        
-        // labelStacView의 trailing을 건드리면 별이 자꾸 오른쪽으로 쏟아짐
-        titleLabel.trailingAnchor.constraint(equalTo: roundedRectangle.trailingAnchor, constant: -30).isActive = true
-        starRatingView.trailingAnchor.constraint(equalTo: roundedRectangle.trailingAnchor, constant: -100).isActive = true
     }
 }
